@@ -2,6 +2,7 @@ import React from 'react';
 import {
   AppRegistry,
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -13,13 +14,51 @@ var urlimagegallery = React.createClass({
   getInitialState: function() {
     return {
       input: '',
-      urls: ['http://i.imgur.com/Efd7QWA.png','http://i.imgur.com/Efd7QWA.png','http://i.imgur.com/Efd7QWA.png'],
+      urls: [
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/Efd7QWA.png',
+      ],
     }
   },
 
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.topText}>Add an image URL below:</Text>
         <View style={styles.inputAndButton}>
           <TextInput
             style={styles.input}
@@ -34,17 +73,15 @@ var urlimagegallery = React.createClass({
             <Text style={styles.buttonText}>+</Text>
           </TouchableHighlight>
         </View>
-        <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={{uri: 'http://i.imgur.com/Efd7QWA.png'}}
-        />
-        {
-          this.state.urls.map(url => {
-            return <Image style={styles.image} source={{uri: url}} />
-          })
-        }
-        </View>
+        <ScrollView
+          style={styles.scrollView}
+          contentContainerStyle={styles.scrollViewContent}>
+          {
+            this.state.urls.map(url => {
+              return <Image style={styles.image} source={{uri: url}} />
+            })
+          }
+        </ScrollView>
       </View>
     );
   },
@@ -68,9 +105,13 @@ var styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
+  topText: {
+    alignSelf: 'center',
+    marginTop: 30,
+  },
   inputAndButton: {
     flexDirection: 'row',
-    marginTop: 30,
+    marginTop: 5,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -83,28 +124,33 @@ var styles = StyleSheet.create({
     width: 250,
   },
   button: {
-    borderColor: 'black',
+    borderColor: '#5cb85c',
     borderWidth: 1,
     borderRadius: 5,
-    marginLeft: 10
+    marginLeft: 10,
+    backgroundColor: '#5cb85c',
   },
   buttonText: {
-    padding: 4
+    padding: 4,
+    color: 'white'
   },
   image: {
-    height: 75,
-    width: 75,
+    height: 80,
+    width: 80,
     borderColor: 'black',
     borderWidth: 1,
     margin: 3
   },
-  imageContainer: {
+  scrollView: {
     flex: 1,
+    marginTop: 10,
+    height: 300,
+  },
+  scrollViewContent: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    margin: 10,
-    justifyContent: 'space-around',
-  }
+    justifyContent: 'space-around'
+  },
 });
 
 AppRegistry.registerComponent('urlimagegallery', () => urlimagegallery);
