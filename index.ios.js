@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Alert,
   AppRegistry,
   Image,
   ScrollView,
@@ -16,41 +17,7 @@ var urlimagegallery = React.createClass({
       input: '',
       urls: [
         'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
-        'http://i.imgur.com/Efd7QWA.png',
+        'http://i.imgur.com/hqBpjBD.png',
       ],
     }
   },
@@ -88,8 +55,9 @@ var urlimagegallery = React.createClass({
 
   onAddPress: function() {
     var { urls, input } = this.state;
-    console.log(this.state.input);
-    console.log(this.state.urls);
+    if (!/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(input)) {
+      return Alert.alert("Invalid URL","That ain't no URL I ever seen!" )
+    }
     this.setState({urls: urls.concat(input), input: ''});
   },
 
@@ -149,7 +117,7 @@ var styles = StyleSheet.create({
   scrollViewContent: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
 });
 
